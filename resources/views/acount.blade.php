@@ -8,7 +8,7 @@
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="bx bx-home-alt"></i></a>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Acount</li>
                     </ol>
@@ -33,6 +33,7 @@
                                 <th style="width: 10px;">No</th>
                                 <th>Nama</th>
                                 <th>Email</th>
+                                <th>Foto</th>
                                 <th class="no-export" style="width: 80px;">Actions</th>
                             </tr>
                         </thead>
@@ -42,6 +43,16 @@
                                     <td style="text-align: center;">{{ $loop->iteration }}</td>
                                     <td>{{ ucwords($user->name) }}</td>
                                     <td>{{ $user->email }}</td>
+                                    <td style="text-align: center;">
+                                        @if ($user->foto && file_exists(storage_path('app/public/' . $user->foto)))
+                                            <img class="card-img" src="/storage/{{ $user->foto }}" alt="Maintenance"
+                                                style="max-width: 50px; max-height: 50px; object-fit: contain;">
+                                        @else
+                                            <img class="card-img" src="{{ asset('img/profilDefault.jpg') }}"
+                                                alt="Maintenance"
+                                                style="max-width: 50px; max-height: 50px; object-fit: contain;">
+                                        @endif
+                                    </td>
                                     <td style="text-align: center;">
                                         <div class="d-flex order-actions">
                                             <button type="button" style="padding: 3px 6px; "
@@ -89,6 +100,26 @@
                                                             placeholder="Email Aktif" required>
                                                     </div>
                                                     <div class="mt-3">
+                                                        <label for="foto" class="form-label">Foto</label>
+                                                        <div class="mb-2">
+                                                            @if ($user->foto && file_exists(storage_path('app/public/' . $user->foto)))
+                                                                <img class="card-img me-1 mb-2"
+                                                                    src="/storage/{{ $user->foto }}"
+                                                                    alt="Maintenance"
+                                                                    style="max-width: 50px; max-height: 50px; object-fit: contain;">
+                                                                <label for="foto" class="form-label"
+                                                                    style="font-size: 10px;">Pilih Foto Jika Ingin
+                                                                    Merubah
+                                                                    !</label>
+                                                                <input type="file" class="form-control"
+                                                                    id="foto" name="foto" accept="image/*">
+                                                            @else
+                                                                <input type="file" class="form-control"
+                                                                    id="foto" name="foto" accept="image/*">
+                                                            @endif
+                                                        </div>
+                                                    </div>
+                                                    <div class="mt-3">
                                                         <label for="password" class="form-label">Password</label>
                                                         <div class="input-group" id="show_hide_password">
                                                             <input type="password" class="form-control border-end-0"
@@ -98,23 +129,27 @@
                                                                 class="input-group-text bg-transparent">
                                                                 <i class="bx bx-hide"></i></a>
                                                         </div>
+                                                        <label for="password" class="form-label"
+                                                            style="font-size: 10px;">Jika Tidak Ada Perubahan Password
+                                                            Tidak
+                                                            Perlu di Isi !</label>
                                                     </div>
-                                                    <div class="mt-3 mb-2">
-                                                        <label for="password_confirmation" class="form-label">Confirm Password</label>
-                                                        <div class="input-group" id="show_hide_password">
+                                                    <div class="mt-1 mb-2">
+                                                        <label for="password_confirmation" class="form-label">Confirm
+                                                            Password</label>
+                                                        <div class="input-group" id="hide_password">
                                                             <input type="password" class="form-control border-end-0"
-                                                                id="password_confirmation" name="password_confirmation"
+                                                                id="password_confirmation"
+                                                                name="password_confirmation"
                                                                 placeholder="Confirm Password" minlength="8">
                                                             <a href="javascript:;"
                                                                 class="input-group-text bg-transparent">
                                                                 <i class="bx bx-hide"></i></a>
                                                         </div>
-                                                        <label for="password" class="form-label"
-                                                            style="font-size: 10px;">Jika Tidak Ada Perubahan Password Tidak
-                                                            Perlu di Isi !</label>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                                        <button type="reset"
+                                                            class="btn btn-outline-secondary">Reset</button>
                                                         <button type="submit"
                                                             class="btn btn-outline-light">Submit</button>
                                                     </div>
@@ -206,6 +241,14 @@
                             </div>
                         </div>
                         <div>
+                            <label for="foto" class="form-label">Foto</label>
+                            <input type="file" class="form-control" id="foto" name="foto"
+                                accept="image/*" required>
+                            <div class="invalid-feedback">
+                                Upload Foto Anda!
+                            </div>
+                        </div>`
+                        <div>
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group" id="show_hide_password">
                                 <input type="password" class="form-control border-end-0" id="password"
@@ -221,7 +264,8 @@
                             <label for="password_confirmation" class="form-label">Confirm Password</label>
                             <div class="input-group" id="show_hide_password">
                                 <input type="password" class="form-control border-end-0" id="password_confirmation"
-                                    name="password_confirmation" placeholder="Confirm Password" minlength="8" required>
+                                    name="password_confirmation" placeholder="Confirm Password" minlength="8"
+                                    required>
                                 <a href="javascript:;" class="input-group-text bg-transparent">
                                     <i class="bx bx-hide"></i></a>
                                 <div class="invalid-feedback">

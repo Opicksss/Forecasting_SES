@@ -14,7 +14,9 @@ class AcountController extends Controller
      */
     public function index()
     {
-        $userss = User::where('id', '!=', auth()->id())->latest()->get();
+        $userss = User::where('id', '!=', auth()->id())
+            ->latest()
+            ->get();
         return view('acount', compact('userss'));
     }
 
@@ -36,7 +38,12 @@ class AcountController extends Controller
                 'name' => 'required|string|max:255',
                 'email' => 'required|email|max:255|unique:users,email',
                 'password' => 'required|confirmed|min:8',
+                'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
             ]);
+
+            if (isset($validatedData['foto'])) {
+                $validatedData['foto'] = $request->file('foto')->store('profile', 'public');
+            }
 
             $validatedData['password'] = Hash::make($validatedData['password']);
 
@@ -69,11 +76,19 @@ class AcountController extends Controller
     public function update(Request $request, User $user)
     {
         try {
-        $validatedData = $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'password' => 'nullable|confirmed|min:8',
-        ]);
+            $validatedData = $request->validate([
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'nullable|confirmed|min:8',
+                'foto' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
+            ]);
+
+            if ($request->hasFile('foto')) {
+                if ($user->foto && Storage::exists('public/' . $user->foto)) {
+                    Storage::delete('public/' . $user->foto);
+                }
+                $validatedData['foto'] = $request->file('foto')->store('profile', 'public');
+            }
 
             if (!empty($validatedData['password'])) {
                 $validatedData['password'] = Hash::make($validatedData['password']);

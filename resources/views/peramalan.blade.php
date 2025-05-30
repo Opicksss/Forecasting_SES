@@ -107,7 +107,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div>
-                                <p class="mb-0">Produksi MAE</p>
+                                <p class="mb-0">Rata-Rata MAE</p>
                                 <h4 class="my-2 mb-2">{{ floatval(round($mae, 2)) }}</h4>
                             </div>
                             <div class="widgets-icons ms-auto"><i class='bx bx-line-chart'></i>

@@ -8,7 +8,7 @@
             <div class="ps-3">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb mb-0 p-0">
-                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}"><i class="bx bx-home-alt"></i></a>
+                        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page">Penjualan</li>
                     </ol>
@@ -19,7 +19,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="mb-0 text-uppercase">Penjualan Tahu</h6>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create" ><i
+            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create"><i
                     class="bx bx-plus bx-spin-hover"></i>Penjualan</button>
         </div>
 
@@ -67,29 +67,35 @@
                                     <div class="modal-dialog modal-dialog-scrollable">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h5 class="modal-title">Update Data Penjualan {{ ucwords($penjualan->name) }}</h5>
+                                                <h5 class="modal-title">Update Data Penjualan
+                                                    {{ ucwords($penjualan->name) }}</h5>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <form action="{{ route('penjualan.update', $penjualan->id) }}" method="POST"
-                                                    enctype="multipart/form-data" class="row g-3 ">
+                                                <form action="{{ route('penjualan.update', $penjualan->id) }}"
+                                                    method="POST" enctype="multipart/form-data" class="row g-3 ">
                                                     @csrf
                                                     @method('PUT')
-                                                    <div class="mt-3">
-                                                        <label for="tanggal" class="form-label">Tanggal Penjualan</label>
+                                                    <input type="date" class="form-control" id="tanggal"
+                                                        name="tanggal" value="{{ $penjualan->tanggal }}" hidden>
+                                                    {{-- <div class="mt-3">
+                                                        <label for="tanggal" class="form-label">Tanggal
+                                                            Penjualan</label>
                                                         <input type="date" class="form-control" id="tanggal"
                                                             value="{{ $penjualan->tanggal }}" name="tanggal"
                                                             placeholder="Tanggal Penjualan" required>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="mt-3 mb-3">
-                                                        <label for="jumlah_terjual" class="form-label">Jumlah Terjual</label>
+                                                        <label for="jumlah_terjual" class="form-label">Jumlah
+                                                            Terjual</label>
                                                         <input type="number" class="form-control" id="jumlah_terjual"
-                                                            value="{{ $penjualan->jumlah_terjual }}" name="jumlah_terjual"
-                                                            placeholder="Jumlah Terjual" required>
+                                                            value="{{ $penjualan->jumlah_terjual }}"
+                                                            name="jumlah_terjual" placeholder="Jumlah Terjual" required>
                                                     </div>
                                                     <div class="modal-footer">
-                                                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                                        <button type="reset"
+                                                            class="btn btn-outline-secondary">Reset</button>
                                                         <button type="submit"
                                                             class="btn btn-outline-light">Submit</button>
                                                     </div>
@@ -116,7 +122,8 @@
                                             <div class="modal-body text-center">
                                                 <p class="mb-4">
                                                     Apakah Anda yakin ingin menghapus Data Penjualan Pada Tanggal
-                                                    <strong style="font-size: 1rem;">{{ strftime('%d %B %Y', strtotime($penjualan->tanggal)) }}
+                                                    <strong
+                                                        style="font-size: 1rem;">{{ strftime('%d %B %Y', strtotime($penjualan->tanggal)) }}
                                                         ?</strong>
                                                     Tindakan ini tidak dapat dibatalkan.
                                                 </p>
@@ -164,14 +171,16 @@
                     <form action="{{ route('penjualan.store') }}" method="POST" enctype="multipart/form-data"
                         class="row g-3 needs-validation" novalidate>
                         @csrf
-                        <div>
+                        <input type="date" class="form-control" id="tanggal" name="tanggal"
+                            value="{{ date('Y-m-d') }}" hidden>
+                        {{-- <div>
                             <label for="tanggal" class="form-label">Tanggal Penjualan</label>
                             <input type="date" class="form-control" id="tanggal" name="tanggal"
                                 placeholder="TTanggal Penjualan" required>
                             <div class="invalid-feedback">
                                 Masukkan TTanggal Penjualan!
                             </div>
-                        </div>
+                        </div> --}}
                         <div>
                             <label for="jumlah_terjual" class="form-label">Jumlah Penjualan</label>
                             <input type="number" class="form-control" id="jumlah_terjual" name="jumlah_terjual"

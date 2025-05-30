@@ -17,19 +17,19 @@ class DatabaseSeeder extends Seeder
         DB::table('users')->insert([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
-            'password' => hash::make('123123123'),
+            'password' => Hash::make('123123123'),
         ]);
 
         DB::table('users')->insert([
             'name' => 'opik',
             'email' => 'trahman.student@unibamadura.ac.id',
-            'password' => hash::make('123123123'),
+            'password' => Hash::make('123123123'),
         ]);
 
         DB::table('users')->insert([
             'name' => 'nurma',
             'email' => 'nurmakkiyah.student@unibamadura.ac.id',
-            'password' => hash::make('123123123'),
+            'password' => Hash::make('123123123'),
         ]);
 
         DB::table('alphas')->insert([

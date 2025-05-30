@@ -1,5 +1,5 @@
 <x-login.layout>
-    <x-slot:title>Forgot Password</x-slot:title>
+    <x-slot:title>Verify Code</x-slot:title>
     <div class="section-authentication-cover">
         <div class="">
             <div class="row g-0">
@@ -15,34 +15,23 @@
                 <div
                     class="col-12 col-xl-5 col-xxl-4 auth-cover-right bg-light align-items-center justify-content-center">
                     <div class="card rounded-0 m-3 shadow-none bg-transparent mb-0">
-                        <div class="alert border-0 border-start border-5 border-white alert-dismissible fade show py-2">
-                            <div class="d-flex align-items-center">
-                                <div class="font-35 text-warning"><i class="bx bx-info-circle"></i>
-                                </div>
-                                <div class="ms-3">
-                                    <h6 class="mb-0 text-white">Pemberitahuan</h6>
-                                    <div>Aksi Ini Akan Mengganti Password Anda!</div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                        </div>
                         <div class="card-body p-sm-5">
                             <div class="p-3">
                                 <div class="text-center">
                                     <img src="assets/images/icons/forgot-2.png" width="100" alt="" />
                                 </div>
-                                <h4 class="mt-5 font-weight-bold">Forgot Password?</h4>
-                                <p class="mb-0">Enter your registered Email to reset the password</p>
-                                <form action="{{ route('forgot-proses') }}" method="POST">
+                                <h4 class="mt-5 font-weight-bold">Verify Your Email Code</h4>
+                                <p class="mb-0">Enter the 6-digit code sent to your email to change password</p>
+                                <form action="{{ route('verify-code-proses') }}" method="POST">
                                     @csrf
                                     <div class="my-4">
-                                        <label class="form-label">Registered Email</label>
-                                        <input type="email" class="form-control"
-                                            placeholder="Enter Your Email Address" id="email" name="email"
+                                        <label class="form-label">Verification Code</label>
+                                        <input type="text" class="form-control"
+                                            placeholder="Enter Your Email Address" id="code" name="code"
                                             required>
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-white">Send</button>
+                                        <button type="submit" class="btn btn-white">Verify</button>
                                         <button type="reset" class="btn btn-outline-secondary">Reset</button>
                                         <a href="{{ route('login') }}" class="btn btn-light"><i
                                                 class='bx bx-arrow-back me-1'></i>Back to

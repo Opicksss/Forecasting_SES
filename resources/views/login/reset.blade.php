@@ -26,10 +26,8 @@
                                     <p class="mb-0">We received your reset password request. Please enter your new
                                         password!</p>
                                 </div>
-                                <form action="{{ route('reset-proses') }}" method="POST">
+                                <form action="{{ route('reset-password-proses') }}" method="POST">
                                     @csrf
-                                    <input type="hidden" name="email" value="{{ $email }}">
-                                    <input type="hidden" name="token" value="{{ $token }}">
                                     <div class="col-12 mb-3">
                                         <label for="password" class="form-label">New Password</label>
                                         <div class="input-group" id="show_hide_password">
