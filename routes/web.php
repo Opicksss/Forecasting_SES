@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('penjualan', [PenjualanController::class, 'index'])->name('penjualan.index');
     Route::post('penjualan/store', [PenjualanController::class, 'store'])->name('penjualan.store');
+    Route::post('penjualan/import', [PenjualanController::class, 'importPenjualan'])->name('penjualan.import');
     Route::put('penjualan/{penjualan}', [PenjualanController::class, 'update'])->name('penjualan.update');
     Route::delete('penjualan/{penjualan}', [PenjualanController::class, 'destroy'])->name('penjualan.destroy');
 

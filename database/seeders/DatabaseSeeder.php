@@ -26,14 +26,8 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('123123123'),
         ]);
 
-        DB::table('users')->insert([
-            'name' => 'nurma',
-            'email' => 'nurmakkiyah.student@unibamadura.ac.id',
-            'password' => Hash::make('123123123'),
-        ]);
-
         DB::table('alphas')->insert([
-            'alpha' => '0.3',
+            'alpha' => '0.1',
         ]);
     }
 }

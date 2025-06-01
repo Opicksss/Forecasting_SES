@@ -19,8 +19,12 @@
         <div class="d-flex justify-content-between align-items-center">
             <h6 class="mb-0 text-uppercase">Penjualan Tahu</h6>
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create"><i
-                    class="bx bx-plus bx-spin-hover"></i>Penjualan</button>
+            <div>
+                {{-- <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#exel"><i
+                        class="bx bx-plus bx-spin-hover"></i>Penjualan Exel</button> --}}
+                <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create"><i
+                        class="bx bx-plus bx-spin-hover"></i>Penjualan</button>
+            </div>
         </div>
 
         <hr />
@@ -199,5 +203,37 @@
         </div>
     </div>
     <!-- //Modal create -->
+
+    <!-- Modal exel -->
+    <div class="modal fade" id="exel" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false"
+        aria-labelledby="exel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Buat Data Penjualan dengan Exel</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('penjualan.import') }}" method="POST" enctype="multipart/form-data"
+                        class="row g-3 needs-validation" novalidate>
+                        @csrf
+                        <div>
+                            <label for="file" class="form-label">Penjualan Exel</label>
+                            <input type="file" class="form-control" id="file" name="file"
+                                accept=".xls,.xlsx" required>
+                            <div class="invalid-feedback">
+                                Upload Foto Anda!
+                            </div>
+                        </div>`
+                        <div class="modal-footer">
+                            <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                            <button type="submit" class="btn btn-outline-light">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //Modal exel -->
 
 </x-layout>

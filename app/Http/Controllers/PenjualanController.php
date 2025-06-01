@@ -6,7 +6,10 @@ use App\Models\Alpha;
 use App\Models\Penjualan;
 use App\Models\Peramalan;
 use Illuminate\Http\Request;
+use App\Imports\PenjualanssImport;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PenjualanController extends Controller
 {
@@ -15,7 +18,7 @@ class PenjualanController extends Controller
      */
     public function index()
     {
-        $penjualans = Penjualan::latest()->get();
+        $penjualans = Penjualan::orderBy('tanggal', 'desc')->get();
         return view('penjualan', compact('penjualans'));
     }
 
@@ -72,6 +75,17 @@ class PenjualanController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus Data Penjualan. Silakan coba lagi.');
         }
+    }
+
+    public function importPenjualan(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|mimes:xlsx,xls',
+        ]);
+
+        Excel::import(new PenjualanssImport(), $request->file('file'));
+
+        return back()->with('success', 'Data penjualan berhasil diimpor!');
     }
 
     private function SES($newPenjualan)
