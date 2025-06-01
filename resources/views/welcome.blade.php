@@ -104,7 +104,7 @@
                                         </h5>
                                         <p class="mb-4">
                                             Optimalkan peramalan permintaan produksi <span class="fw-bold">Tahu</span>
-                                            di Lenteng dengan metode
+                                            di Batuan dengan metode
                                             <span class="fw-bold">Single Exponential Smoothing</span> untuk pengambilan
                                             keputusan yang lebih akurat dan efisien.
                                         </p>
