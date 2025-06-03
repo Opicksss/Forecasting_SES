@@ -243,7 +243,7 @@
                         <div>
                             <label for="foto" class="form-label">Foto</label>
                             <input type="file" class="form-control" id="foto" name="foto"
-                                accept="image/*" required>
+                                accept="image/*">
                             <div class="invalid-feedback">
                                 Upload Foto Anda!
                             </div>

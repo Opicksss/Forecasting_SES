@@ -32,9 +32,9 @@
                                         <label for="password" class="form-label">New Password</label>
                                         <div class="input-group" id="show_hide_password">
                                             <input type="password" class="form-control border-end-0" id="password"
-                                                name="password" placeholder="Enter New Password" minlength="8" required> <a
-                                                href="javascript:;" class="input-group-text bg-transparent"><i
-                                                    class='bx bx-hide'></i></a>
+                                                name="password" placeholder="Enter New Password" minlength="8"
+                                                required> <a href="javascript:;"
+                                                class="input-group-text bg-transparent"><i class='bx bx-hide'></i></a>
                                         </div>
                                         @error('password')
                                             <div class="text-sm text-danger mt-2">{{ $message }}</div>
@@ -55,8 +55,9 @@
                                         @enderror
                                     </div>
                                     <div class="d-grid gap-2">
-                                        <button type="submit" class="btn btn-white">Change Password</button> <a
-                                            href="{{ route('login') }}" class="btn btn-light"><i
+                                        <button type="submit" class="btn btn-white">Change Password</button>
+                                        <button type="reset" class="btn btn-outline-secondary">Reset</button>
+                                        <a href="{{ route('login') }}" class="btn btn-light"><i
                                                 class='bx bx-arrow-back mr-1'></i>Back to Login</a>
                                     </div>
                                 </form>

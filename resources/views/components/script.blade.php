@@ -37,31 +37,6 @@
                         columns: ':not(.no-export)'
                     }
                 }
-                // {
-                //     extend: 'pdfHtml5',
-                //     text: 'PDF',
-                //     exportOptions: {
-                //         columns: ':not(.no-export)', // Hilangkan kolom dengan class "no-export"
-                //         orthogonal: 'export'
-                //     },
-                //     customize: function(doc) {
-                //         var body = doc.content[1].table.body;
-
-                //         body.forEach(function(row, i) {
-                //             if (i > 0) { // Skip header row
-                //                 var imgElement = $('#datatable tbody tr').eq(i - 1)
-                //                     .find('img[data-base64]');
-                //                 if (imgElement.length > 0) {
-                //                     var base64Img = imgElement.attr('data-base64');
-                //                     row[8] = { // Ubah ke indeks kolom gambar
-                //                         image: 'data:image/png;base64,' + base64Img,
-                //                         fit: [50, 50] // Ukuran gambar di PDF
-                //                     };
-                //                 }
-                //             }
-                //         });
-                //     }
-                // }
             ]
         });
 
