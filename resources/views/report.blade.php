@@ -69,7 +69,11 @@
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-item d-flex justify-content-between align-items-center">
                                         <span class="me-5">ALPHA</span>
-                                    
+                                        {{-- <span class="me-5">MAPE</span>
+                                        <span class="me-5">MAE</span>
+                                        <span class="me-5">MSE</span>
+                                        <span class="me-5">RMSE</span>
+                                        <span>MASE</span> --}}
                                     </li>
                                     @foreach ($alphas as $item)
                                         <li>
@@ -77,11 +81,16 @@
                                                 style="display:inline;">
                                                 @csrf
                                                 <input type="hidden" name="alpha" value="{{ $item['alpha'] }}">
-
+                                                {{-- <button type="submit"
+                                                    class="dropdown-item d-flex justify-content-between align-items-center {{ $item['alpha'] == $bestMape || $item['alpha'] == $bestRmse ? 'bg-success text-white' : ($item['alpha'] == $alpha ? 'bg-secondary text-white' : '') }}"> --}}
                                                 <button type="submit"
                                                     class="dropdown-item d-flex justify-content-between align-items-center">
                                                     <span>{{ $item['alpha'] }}</span>
-
+                                                    {{-- <span>{{ $item['mape'] }}%</span>
+                                                    <span>{{ $item['mae'] }}</span>
+                                                    <span>{{ $item['mse'] }}</span>
+                                                    <span>{{ $item['rmse'] }}</span>
+                                                    <span>{{ $item['mase'] }}</span> --}}
                                                 </button>
                                             </form>
                                         </li>
