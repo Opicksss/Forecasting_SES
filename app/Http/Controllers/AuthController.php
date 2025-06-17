@@ -86,7 +86,19 @@ class AuthController extends Controller
         if (!session('reset_email')) {
             return redirect()->route('forgot')->with('error', 'Please enter your email first.');
         }
-        return view('login.verify-code');
+
+        $email = session('reset_email');
+
+        // Ambil data token dari tabel password_reset_tokens
+        $reset = DB::table('password_reset_tokens')->where('email', $email)->latest('created_at')->first();
+
+        if (!$reset) {
+            return redirect()->route('forgot')->with('error', 'Reset token not found. Please request again.');
+        }
+
+        return view('login.verify-code', [
+            'created_at' => strtotime($reset->created_at), // konversi ke timestamp detik
+        ]);
     }
 
     // Proses verifikasi kode

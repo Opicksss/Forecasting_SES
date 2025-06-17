@@ -36,7 +36,7 @@
 					<a href="{{route('acount.index')}}">
 						<div class="parent-icon flip-animation"><i class='bx bxs-user-account'></i>
 						</div>
-						<div class="menu-title">Acount</div>
+						<div class="menu-title">Account</div>
 					</a>
 				</li>
 			</ul>

@@ -1,5 +1,5 @@
 <x-layout>
-    <x-slot:title>Acount</x-slot:title>
+    <x-slot:title>Account</x-slot:title>
 
     <div class="page-content">
         <!--breadcrumb-->
@@ -10,17 +10,17 @@
                     <ol class="breadcrumb mb-0 p-0">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}"><i class="bx bx-home-alt"></i></a>
                         </li>
-                        <li class="breadcrumb-item active" aria-current="page">Acount</li>
+                        <li class="breadcrumb-item active" aria-current="page">Account</li>
                     </ol>
                 </nav>
             </div>
         </div>
         <!--end breadcrumb-->
         <div class="d-flex justify-content-between align-items-center">
-            <h6 class="mb-0 text-uppercase">Manajemen Acount</h6>
+            <h6 class="mb-0 text-uppercase">Manajemen Account</h6>
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-light" data-bs-toggle="modal" data-bs-target="#create"><i
-                    class="bx bx-plus bx-spin-hover"></i>Acount</button>
+                    class="bx bx-plus bx-spin-hover"></i>Account</button>
         </div>
 
         <hr />

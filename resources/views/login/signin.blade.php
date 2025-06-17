@@ -46,9 +46,9 @@
                                                             class="bx bx-hide"></i></a>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                            </div>
-                                            <div class="col-md-6 text-end"> <a
+                                            {{-- <div class="col-md-6">
+                                            </div> --}}
+                                            <div class="col-md-12 text-end"> <a
                                                     href="{{route('forgot')}}">Forgot Password ?</a>
                                             </div>
                                             <div class="col-12">

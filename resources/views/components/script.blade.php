@@ -13,12 +13,7 @@
     $(document).ready(function() {
         var table = $('#datatable').DataTable({
             lengthChange: false,
-            buttons: [{
-                    extend: 'copy',
-                    exportOptions: {
-                        columns: ':not(.no-export)'
-                    }
-                },
+            buttons: [
                 {
                     extend: 'excel',
                     exportOptions: {

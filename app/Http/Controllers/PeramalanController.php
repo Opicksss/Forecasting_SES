@@ -106,7 +106,7 @@ class PeramalanController extends Controller
     private function PeramalanAlpha($alpha)
     {
         $penjualans = Penjualan::orderBy('tanggal')->get();
-        $results = [];
+
 
         $F_prev = $penjualans->first()->jumlah_terjual ?? 0;
 
@@ -117,7 +117,6 @@ class PeramalanController extends Controller
         $naiveErrors = [];
         $count = 0;
 
-        // Hitung Naive Forecast untuk MASE
         for ($i = 1; $i < $penjualans->count(); $i++) {
             $naiveErrors[] = abs($penjualans[$i]->jumlah_terjual - $penjualans[$i - 1]->jumlah_terjual);
         }

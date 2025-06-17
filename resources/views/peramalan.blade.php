@@ -32,8 +32,6 @@
                                     {{ isset($hari->hasil_peramalan) ? floatval(round($hari->hasil_peramalan, 2)) : '-' }}
                                 </h4>
                             </div>
-                            <div class="widgets-icons ms-auto"><i class='bx bx-line-chart'></i>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -45,8 +43,6 @@
                             <div>
                                 <p class="mb-0">Rata-Rata MAPE</p>
                                 <h4 class="my-2 mb-2">{{ floatval(round($mape, 2)) }}%</h4>
-                            </div>
-                            <div class="widgets-icons ms-auto"><i class='bx bx-error'></i>
                             </div>
                         </div>
                     </div>
@@ -69,7 +65,11 @@
                                 <ul class="dropdown-menu">
                                     <li class="dropdown-item d-flex justify-content-between align-items-center">
                                         <span class="me-5">ALPHA</span>
-                                    
+                                        <span class="me-5">MAPE</span>
+                                        <span class="me-5">MAE</span>
+                                        <span class="me-5">MSE</span>
+                                        <span class="me-5">RMSE</span>
+                                        <span>MASE</span>
                                     </li>
                                     @foreach ($alphas as $item)
                                         <li>
@@ -77,11 +77,14 @@
                                                 style="display:inline;">
                                                 @csrf
                                                 <input type="hidden" name="alpha" value="{{ $item['alpha'] }}">
-
                                                 <button type="submit"
-                                                    class="dropdown-item d-flex justify-content-between align-items-center">
+                                                    class="dropdown-item d-flex justify-content-between align-items-center {{ $item['alpha'] == $bestMape || $item['alpha'] == $bestRmse ? 'bg-success text-white' : ($item['alpha'] == $alpha ? 'bg-secondary text-white' : '') }}">
                                                     <span>{{ $item['alpha'] }}</span>
-
+                                                    <span>{{ $item['mape'] }}%</span>
+                                                    <span>{{ $item['mae'] }}</span>
+                                                    <span>{{ $item['mse'] }}</span>
+                                                    <span>{{ $item['rmse'] }}</span>
+                                                    <span>{{ $item['mase'] }}</span>
                                                 </button>
                                             </form>
                                         </li>
@@ -103,8 +106,6 @@
                                 <p class="mb-0">Rata-Rata MAE</p>
                                 <h4 class="my-2 mb-2">{{ floatval(round($mae, 2)) }}</h4>
                             </div>
-                            <div class="widgets-icons ms-auto"><i class='bx bx-line-chart'></i>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -116,8 +117,6 @@
                             <div>
                                 <p class="mb-0">Rata-Rata MSE</p>
                                 <h4 class="my-2 mb-2">{{ floatval(round($mse, 2)) }}</h4>
-                            </div>
-                            <div class="widgets-icons ms-auto"><i class='bx bx-error'></i>
                             </div>
                         </div>
                     </div>
@@ -131,8 +130,6 @@
                                 <p class="mb-0">Rata-Rata RMSE</p>
                                 <h4 class="my-2 mb-2">{{ floatval(round($rmse, 2)) }}</h4>
                             </div>
-                            <div class="widgets-icons ms-auto"><i class='bx  bx-analyse'></i>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -144,8 +141,6 @@
                             <div>
                                 <p class="mb-0">Rata-Rata MASE</p>
                                 <h4 class="my-2 mb-2">{{ floatval(round($mase, 2)) }}</h4>
-                            </div>
-                            <div class="widgets-icons ms-auto"><i class='bx  bx-analyse'></i>
                             </div>
                         </div>
                     </div>

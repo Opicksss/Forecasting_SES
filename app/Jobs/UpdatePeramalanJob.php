@@ -35,10 +35,8 @@ class UpdatePeramalanJob implements ShouldQueue
     {
         $alpha = Alpha::latest()->first()->alpha ?? 0.5;
 
-        // Kosongkan semua data peramalan
         Peramalan::truncate();
 
-        // Ambil semua penjualan dan urutkan berdasarkan tanggal (supaya SES-nya berurutan)
         $penjualans = Penjualan::orderBy('tanggal')->get();
 
         $F_prev = null;
@@ -46,19 +44,15 @@ class UpdatePeramalanJob implements ShouldQueue
         foreach ($penjualans as $penjualan) {
             $A_t = $penjualan->jumlah_terjual;
 
-            // Jika pertama kali, forecast = actual
             if (is_null($F_prev)) {
                 $F_prev = $A_t;
             }
 
-            // Peramalan sekarang
             $F_t = $alpha * $A_t + (1 - $alpha) * $F_prev;
 
-            // Error & MAPE
             $error = abs($A_t - $F_prev);
             $mape = $A_t != 0 ? abs(($A_t - $F_prev) / $A_t) * 100 : 0;
 
-            // Simpan hasil peramalan
             Peramalan::create([
                 'hasil_peramalan' => $F_t,
                 'error' => $error,
@@ -66,7 +60,6 @@ class UpdatePeramalanJob implements ShouldQueue
                 'penjualan_id' => $penjualan->id,
             ]);
 
-            // Update forecast sebelumnya
             $F_prev = $F_t;
         }
     }

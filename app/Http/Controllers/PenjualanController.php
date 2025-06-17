@@ -8,7 +8,6 @@ use App\Models\Peramalan;
 use Illuminate\Http\Request;
 use App\Imports\PenjualanssImport;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
 
 class PenjualanController extends Controller
