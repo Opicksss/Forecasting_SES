@@ -247,7 +247,7 @@
                             <div class="invalid-feedback">
                                 Upload Foto Anda!
                             </div>
-                        </div>`
+                        </div>
                         <div>
                             <label for="password" class="form-label">Password</label>
                             <div class="input-group" id="show_hide_password">
